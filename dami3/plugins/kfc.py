@@ -18,7 +18,7 @@ async def is_enable() -> bool:
 
 
 config = nonebot.get_driver().config
-kfc = on_message(rule=Rule(is_enable, is_type(GroupMessageEvent)), block=True)
+kfc = on_message(rule=is_enable & is_type(GroupMessageEvent), block=True)
 
 
 def get_kfc_data():
