@@ -1,1 +1,1 @@
-qq-botpy
+zhipuai~=2.1.3

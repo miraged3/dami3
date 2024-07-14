@@ -33,7 +33,11 @@ async def handle_function(event: GroupMessageEvent, msg: Message = EventMessage(
             ],
             stream=False
         )
-        await llm_reply.finish(response.choices[0].message.content)
+        reply_text = response.choices[0].message.content
+        if reply_text.startswith('大米：'):
+            reply_text = reply_text[3:]
+        recent_messages[event.group_id].append('大米：' + reply_text)
+        await llm_reply.finish(reply_text)
     else:
         await llm_reply.finish()
 
